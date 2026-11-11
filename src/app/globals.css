@@ -1,0 +1,290 @@
+/* Hallmark · shape: prompt book (A) / painted door (B), lab prototypes · genre: editorial · theme: custom · job: hire · idea: "the stage manager's book is the incident runbook: precise script, human margin" · vibe: "precise script, warm hand, Bogotá stage"
+ * paper: oklch(95.4% 0.01 80) (A) / oklch(80% 0.035 78) (B) · accent: oklch(45% 0.15 262) añil · display: Piazzolla (A) / Alegreya (B) · body: Piazzolla (A) / Alegreya Sans (B) · hero: name and tagline in the script column, the margin carries the hand · nav: wordmark left, three links right · footer: none in lab · imagery: the product built (SQL, cast list), photo slots marked TODO · signature: margin notes in a hand beside a precise script
+ * axes: light/roman-serif/cool · posture: restrained (A) / committed (B) · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V5 · weakest: E, margin notes on phones; set them inline as real asides instead of hiding them */
+/* Hallmark · waive 58: the incident report and hero lines are the owner's pinned copy (brief wins) · waive 77: lab prototypes carry 3 of 10 sections by agreement · waive 26b: no disabled controls exist · answered 79: hero centred in the first screen; display sized to keep the tagline on screen */
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Shared scale (from Hallmark's scaffold; values, not colours)
+--------------------------------------------------------------------------- */
+:root {
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1.0625rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-section: clamp(1.875rem, 2.2vw + 1rem, 3rem);
+  --text-lead: clamp(1.125rem, 0.5vw + 1rem, 1.5rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --container: 1200px; --gutter: 64px; --section-gap: 144px;
+  --radius-card: 4px; --radius-pill: 999px; --rule-hair: 1px;
+
+  /* Fallback tokens (used by pages outside a direction, e.g. the lab index) */
+  --color-paper: oklch(95.4% 0.01 80);
+  --color-paper-2: oklch(92% 0.012 80);
+  --color-paper-3: oklch(88% 0.014 80);
+  --color-ink: oklch(24% 0.014 262);
+  --color-ink-2: oklch(34% 0.014 262);
+  --color-muted: oklch(46% 0.014 262);
+  --color-rule: oklch(82% 0.012 80);
+  --color-accent: oklch(45% 0.15 262);
+  --color-accent-ink: oklch(97% 0.008 80);
+  --color-note: oklch(48% 0.11 45);
+  --color-focus: oklch(45% 0.15 262);
+  --color-todo: oklch(48% 0.13 75);
+  --font-display: var(--font-piazzolla), ui-serif, Georgia, serif;
+  --font-body: var(--font-piazzolla), ui-serif, Georgia, serif;
+  --font-hand: var(--font-shantell), ui-rounded, sans-serif;
+  --font-code: var(--font-jetbrains), ui-monospace, monospace;
+
+
+  /* Palette primitives: direction-mode-role */
+  --a-light-paper: oklch(19.5% 0.008 60);
+  --a-light-paper-2: oklch(23.5% 0.01 60);
+  --a-light-paper-3: oklch(28% 0.012 60);
+  --a-light-ink: oklch(92% 0.012 80);
+  --a-light-ink-2: oklch(84% 0.012 80);
+  --a-light-muted: oklch(72% 0.012 80);
+  --a-light-rule: oklch(34% 0.012 60);
+  --a-light-accent: oklch(75% 0.105 262);
+  --a-light-accent-ink: oklch(19% 0.03 262);
+  --a-light-note: oklch(79% 0.09 68);
+  --a-light-focus: oklch(75% 0.105 262);
+  --a-dark-paper: oklch(19.5% 0.008 60);
+  --a-dark-paper-2: oklch(23.5% 0.01 60);
+  --a-dark-paper-3: oklch(28% 0.012 60);
+  --a-dark-ink: oklch(92% 0.012 80);
+  --a-dark-ink-2: oklch(84% 0.012 80);
+  --a-dark-muted: oklch(72% 0.012 80);
+  --a-dark-rule: oklch(34% 0.012 60);
+  --a-dark-accent: oklch(75% 0.105 262);
+  --a-dark-accent-ink: oklch(19% 0.03 262);
+  --a-dark-note: oklch(79% 0.09 68);
+  --a-dark-focus: oklch(75% 0.105 262);
+  --b-light-paper: oklch(23% 0.075 262);
+  --b-light-paper-2: oklch(28% 0.03 60);
+  --b-light-paper-3: oklch(33% 0.035 60);
+  --b-light-ink: oklch(93% 0.02 85);
+  --b-light-ink-2: oklch(86% 0.025 85);
+  --b-light-muted: oklch(80% 0.03 85);
+  --b-light-rule: oklch(55% 0.04 70);
+  --b-light-accent: oklch(80% 0.08 85);
+  --b-light-accent-ink: oklch(22% 0.06 262);
+  --b-light-note: oklch(82% 0.08 160);
+  --b-light-focus: oklch(85% 0.09 85);
+  --b-light-door: oklch(17% 0.06 262);
+  --b-light-door-2: oklch(21% 0.07 262);
+  --b-light-door-well: oklch(13% 0.04 262);
+  --b-light-door-ink: oklch(95% 0.02 85);
+  --b-light-door-muted: oklch(83% 0.045 255);
+  --b-light-door-line: oklch(60% 0.08 258);
+  --b-light-door-kw: oklch(84% 0.1 200);
+  --b-light-door-str: oklch(86% 0.1 95);
+  --b-dark-paper: oklch(23% 0.075 262);
+  --b-dark-paper-2: oklch(28% 0.03 60);
+  --b-dark-paper-3: oklch(33% 0.035 60);
+  --b-dark-ink: oklch(93% 0.02 85);
+  --b-dark-ink-2: oklch(86% 0.025 85);
+  --b-dark-muted: oklch(80% 0.03 85);
+  --b-dark-rule: oklch(55% 0.04 70);
+  --b-dark-accent: oklch(80% 0.08 85);
+  --b-dark-accent-ink: oklch(22% 0.06 262);
+  --b-dark-note: oklch(82% 0.08 160);
+  --b-dark-focus: oklch(85% 0.09 85);
+  --b-dark-door: oklch(17% 0.06 262);
+  --b-dark-door-2: oklch(21% 0.07 262);
+  --b-dark-door-well: oklch(13% 0.04 262);
+  --b-dark-door-line: oklch(60% 0.08 258);
+}
+
+@media (max-width: 60rem) { :root { --gutter: 24px; --section-gap: 96px; } }
+@media (max-width: 40rem) { :root { --gutter: 16px; --section-gap: 72px; } }
+
+/* ---------------------------------------------------------------------------
+   Direction A — the prompt book
+--------------------------------------------------------------------------- */
+.dir-a {
+  --color-paper: var(--a-light-paper);
+  --color-paper-2: var(--a-light-paper-2);
+  --color-paper-3: var(--a-light-paper-3);
+  --color-ink: var(--a-light-ink);
+  --color-ink-2: var(--a-light-ink-2);
+  --color-muted: var(--a-light-muted);
+  --color-rule: var(--a-light-rule);
+  --color-accent: var(--a-light-accent);
+  --color-accent-ink: var(--a-light-accent-ink);
+  --color-note: var(--a-light-note);
+  --color-focus: var(--a-light-focus);
+  --font-display: var(--font-piazzolla), ui-serif, Georgia, serif;
+  --font-body: var(--font-piazzolla), ui-serif, Georgia, serif;
+}
+:root[data-theme="dark"] .dir-a {
+  --color-paper: var(--a-dark-paper);
+  --color-paper-2: var(--a-dark-paper-2);
+  --color-paper-3: var(--a-dark-paper-3);
+  --color-ink: var(--a-dark-ink);
+  --color-ink-2: var(--a-dark-ink-2);
+  --color-muted: var(--a-dark-muted);
+  --color-rule: var(--a-dark-rule);
+  --color-accent: var(--a-dark-accent);
+  --color-accent-ink: var(--a-dark-accent-ink);
+  --color-note: var(--a-dark-note);
+  --color-focus: var(--a-dark-focus);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dir-a {
+    --color-paper: var(--a-light-paper);
+    --color-paper-2: var(--a-light-paper-2);
+    --color-paper-3: var(--a-light-paper-3);
+    --color-ink: var(--a-light-ink);
+    --color-ink-2: var(--a-light-ink-2);
+    --color-muted: var(--a-light-muted);
+    --color-rule: var(--a-light-rule);
+    --color-accent: var(--a-light-accent);
+    --color-accent-ink: var(--a-light-accent-ink);
+    --color-note: var(--a-light-note);
+    --color-focus: var(--a-light-focus);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Direction B — the Barichara door
+   --color-door*: the añil panels; --color-stone*: sandstone & tapia
+--------------------------------------------------------------------------- */
+.dir-b {
+  --color-paper: var(--b-light-paper);
+  --color-paper-2: var(--b-light-paper-2);
+  --color-paper-3: var(--b-light-paper-3);
+  --color-ink: var(--b-light-ink);
+  --color-ink-2: var(--b-light-ink-2);
+  --color-muted: var(--b-light-muted);
+  --color-rule: var(--b-light-rule);
+  --color-accent: var(--b-light-accent);
+  --color-accent-ink: var(--b-light-accent-ink);
+  --color-note: var(--b-light-note);
+  --color-focus: var(--b-light-focus);
+  --color-door: var(--b-light-door);
+  --color-door-2: var(--b-light-door-2);
+  --color-door-well: var(--b-light-door-well);
+  --color-door-ink: var(--b-light-door-ink);
+  --color-door-muted: var(--b-light-door-muted);
+  --color-door-line: var(--b-light-door-line);
+  --color-door-kw: var(--b-light-door-kw);
+  --color-door-str: var(--b-light-door-str);
+  --font-display: var(--font-alegreya), ui-serif, Georgia, serif;
+  --font-body: var(--font-alegreya), ui-serif, Georgia, serif;
+  --font-tech: var(--font-alegreya-sans), ui-sans-serif, sans-serif;
+  --font-code: var(--font-jetbrains), ui-monospace, monospace;
+}
+:root[data-theme="dark"] .dir-b {
+  --color-paper: var(--b-dark-paper);
+  --color-paper-2: var(--b-dark-paper-2);
+  --color-paper-3: var(--b-dark-paper-3);
+  --color-ink: var(--b-dark-ink);
+  --color-ink-2: var(--b-dark-ink-2);
+  --color-muted: var(--b-dark-muted);
+  --color-rule: var(--b-dark-rule);
+  --color-accent: var(--b-dark-accent);
+  --color-accent-ink: var(--b-dark-accent-ink);
+  --color-note: var(--b-dark-note);
+  --color-focus: var(--b-dark-focus);
+  --color-door: var(--b-dark-door);
+  --color-door-2: var(--b-dark-door-2);
+  --color-door-well: var(--b-dark-door-well);
+  --color-door-line: var(--b-dark-door-line);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dir-b {
+    --color-paper: var(--b-light-paper);
+    --color-paper-2: var(--b-light-paper-2);
+    --color-paper-3: var(--b-light-paper-3);
+    --color-ink: var(--b-light-ink);
+    --color-ink-2: var(--b-light-ink-2);
+    --color-muted: var(--b-light-muted);
+    --color-rule: var(--b-light-rule);
+    --color-accent: var(--b-light-accent);
+    --color-accent-ink: var(--b-light-accent-ink);
+    --color-note: var(--b-light-note);
+    --color-focus: var(--b-light-focus);
+    --color-door: var(--b-light-door);
+    --color-door-2: var(--b-light-door-2);
+    --color-door-well: var(--b-light-door-well);
+    --color-door-line: var(--b-light-door-line);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Base (Hallmark floor)
+--------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-padding-top: var(--space-2xl); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+}
+body:has(.dir-a), body:has(.dir-b) { background: var(--color-paper); }
+.dir-a, .dir-b {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  caret-color: var(--color-accent);
+  scrollbar-color: var(--color-muted) var(--color-paper);
+  min-height: 100dvh;
+}
+::selection { background: color-mix(in oklab, var(--color-accent) 24%, transparent); color: var(--color-ink); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: 2px; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, video { max-width: 100%; height: auto; display: block; }
+svg { display: block; }
+button { font: inherit; color: inherit; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+.skip-link {
+  position: absolute; left: var(--space-md); top: var(--space-md); z-index: 50;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-ink); color: var(--color-paper);
+  border-radius: var(--radius-card);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; }
+
+/* TODO placeholders: visible on purpose */
+.todo {
+  display: inline-block;
+  border: 1px dashed var(--color-todo, currentColor);
+  border-radius: var(--radius-card);
+  padding: var(--space-2xs) var(--space-xs);
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+.todo-label { font-weight: 700; margin-inline-end: var(--space-2xs); }
+
+/* Photo slots */
+[data-slot] {
+  position: relative; overflow: hidden;
+  display: grid; place-items: center; text-align: center;
+  background: var(--color-paper-2);
+  border: 1px dashed var(--color-rule);
+  border-radius: var(--radius-card);
+  color: var(--color-muted);
+  padding: var(--space-lg);
+}
+[data-slot] > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
