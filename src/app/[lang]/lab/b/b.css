@@ -1,0 +1,106 @@
+/* Hallmark · lab direction B, the Barichara door; tokens and full stamp in globals.css */
+
+.b-labbar { background: var(--color-door-well); color: var(--color-door-ink); font-family: var(--font-tech); font-size: var(--text-sm); }
+.b-labbar { --color-focus: var(--color-door-ink); }
+.b-labbar p { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); justify-content: space-between; padding-block: var(--space-xs); }
+
+.b-header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-md); padding-block: var(--space-lg); }
+.b-wordmark { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; text-decoration: none; }
+.b-header ul { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-lg); font-family: var(--font-tech); }
+.b-header nav a { text-decoration: none; }
+.b-header nav a:hover { text-decoration: underline; }
+.b-theme {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  min-height: 44px; padding: var(--space-2xs) var(--space-sm);
+  background: transparent; border: 1px solid var(--color-rule); border-radius: var(--radius-card);
+  cursor: pointer; font-size: var(--text-sm);
+  transition: background-color var(--dur-short) var(--ease-out);
+}
+.b-theme:hover { background: var(--color-paper-2); }
+.b-theme:active { transform: translateY(1px); }
+
+/* Hero */
+.b-hero { padding-block: var(--space-xl) var(--space-3xl); }
+@media (min-width: 60rem) { .b-hero { min-height: calc(100svh - 9rem); display: grid; align-content: center; padding-block: var(--space-xl); } }
+.b-hero-grid { display: grid; gap: var(--space-2xl); align-items: stretch; }
+@media (min-width: 60rem) { .b-hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+.b-display { display: grid; gap: var(--space-xs); font-size: var(--text-display); font-weight: 600; line-height: 0.98; letter-spacing: -0.02em; }
+.b-display-brand { font-size: var(--text-section); font-weight: 400; color: var(--color-accent); }
+.b-lead { margin-top: var(--space-xl); font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink-2); max-width: 38ch; }
+.b-actions { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-sm); font-family: var(--font-tech); }
+.b-btn {
+  display: inline-flex; align-items: center; min-height: 48px; padding: var(--space-xs) var(--space-lg);
+  border-radius: 2px; font-size: var(--text-md); font-weight: 700; text-decoration: none;
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.b-btn:active { transform: translateY(1px); }
+.b-btn-primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.b-btn-primary:hover { background: color-mix(in oklab, var(--color-accent) 82%, var(--color-ink)); }
+.b-btn-secondary { border: 2px solid var(--color-ink); }
+.b-btn-secondary:hover { background: var(--color-paper-2); }
+.b-where { display: flex; gap: var(--space-sm); margin-top: var(--space-lg); color: var(--color-muted); font-family: var(--font-tech); font-size: var(--text-sm); }
+.b-where span + span { padding-inline-start: var(--space-sm); border-inline-start: 1px solid var(--color-rule); }
+
+/* The door */
+.b-door {
+  display: grid; grid-template-rows: auto 1fr; gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-door); color: var(--color-door-ink);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 8px var(--color-door), inset 0 0 0 9px var(--color-door-line);
+  font-family: var(--font-tech);
+  min-height: 22rem;
+}
+.b-door-title { font-size: var(--text-sm); color: var(--color-door-muted); padding: var(--space-xs) var(--space-xs) 0; }
+.b-door-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+.b-door-panels li {
+  display: flex; align-items: flex-end; min-height: 5rem; padding: var(--space-md);
+  border: 1px solid var(--color-door-line); border-radius: 1px;
+  box-shadow: inset 0 0 0 5px var(--color-door), inset 0 0 0 6px color-mix(in oklab, var(--color-door-line) 55%, var(--color-door));
+  font-size: var(--text-lg); font-weight: 400;
+}
+
+/* Incident: the whole section is a door panel */
+.b-incident { background: var(--color-door); color: var(--color-door-ink); font-family: var(--font-tech); padding-block: var(--section-gap); }
+.b-incident-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-lg); }
+.b-h2 { font-size: var(--text-section); line-height: 1.08; letter-spacing: -0.015em; max-width: 28ch; hyphens: manual; }
+.b-tech { font-family: var(--font-tech); font-weight: 700; }
+.b-hold { display: grid; text-align: end; color: var(--color-door-muted); font-size: var(--text-sm); }
+.b-hold .num { font-size: var(--text-display); line-height: 1; font-weight: 700; color: var(--color-door-ink); letter-spacing: -0.03em; }
+.b-panels { margin-top: var(--space-2xl); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); }
+@media (min-width: 48rem) { .b-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } .b-panel-wide { grid-column: 1 / -1; } }
+.b-panel {
+  min-width: 0;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-door-line); border-radius: 1px;
+  box-shadow: inset 0 0 0 7px var(--color-door), inset 0 0 0 8px color-mix(in oklab, var(--color-door-line) 50%, var(--color-door));
+  background: var(--color-door-2);
+}
+.b-panel p { max-width: 62ch; }
+.b-h3 { font-family: var(--font-tech); font-weight: 700; font-size: var(--text-lg); margin-bottom: var(--space-xs); }
+.b-panel-note { margin-top: var(--space-md); font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-door-muted); }
+.b-incident .todo { --color-todo: var(--color-door-str); }
+
+.b-well { margin: var(--space-lg) 0 0; background: var(--color-door-well); border-radius: 2px; }
+.b-well figcaption { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-sm); align-items: center; padding: var(--space-sm) var(--space-md); border-bottom: 1px solid color-mix(in oklab, var(--color-door-line) 40%, transparent); font-size: var(--text-sm); color: var(--color-door-muted); }
+.b-well-tag { font-family: var(--font-code); font-size: var(--text-xs); border: 1px solid currentColor; border-radius: var(--radius-pill); padding: 0 var(--space-xs); }
+.b-sql { margin: 0; padding: var(--space-md); overflow-x: auto; font-family: var(--font-code); font-size: var(--text-sm); line-height: 1.6; color: var(--color-door-ink); }
+.b-sql .sql-kw { color: var(--color-door-kw); font-weight: 600; }
+.b-sql .sql-comment { color: var(--color-door-muted); }
+.b-sql .sql-str, .b-sql .sql-num { color: var(--color-door-str); }
+
+/* Clients: tapia band */
+.b-clients { background: var(--color-paper-2); padding-block: var(--section-gap); }
+.b-clients-head { display: grid; gap: var(--space-md); }
+.b-intro { font-size: var(--text-lead); color: var(--color-ink-2); }
+.b-list { margin-top: var(--space-2xl); }
+.b-item { display: grid; gap: var(--space-xs); padding-block: var(--space-lg); border-top: 3px solid var(--color-rule); }
+@media (min-width: 48rem) { .b-item { grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr); column-gap: var(--space-xl); align-items: baseline; } }
+.b-item h3 { font-size: var(--text-2xl); font-weight: 600; line-height: 1.1; }
+.b-item-note { margin-top: var(--space-2xs); color: var(--color-note); }
+.b-item-kind { display: flex; flex-wrap: wrap; gap: var(--space-xs); color: var(--color-muted); font-family: var(--font-tech); }
+.b-item-kind span + span { padding-inline-start: var(--space-xs); border-inline-start: 1px solid var(--color-rule); }
+.b-item-role { font-family: var(--font-tech); display: grid; gap: var(--space-2xs); }
+.b-item-role p { font-weight: 700; }
+.b-item-role a { color: var(--color-ink); }
+.b-slot { margin-top: var(--space-2xl); aspect-ratio: 21 / 9; background: var(--color-paper-3); border-color: var(--color-rule); color: var(--color-ink-2); font-family: var(--font-tech); }
