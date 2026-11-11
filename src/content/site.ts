@@ -67,6 +67,7 @@ export type SiteContent = {
     home: string;
     work: string;
     cv: string;
+    contact: string;
     /** Label for the link that switches to the *other* language. */
     otherLanguage: string;
     otherLanguageName: string;
@@ -84,7 +85,7 @@ export type SiteContent = {
   };
   services: {
     title: string;
-    items: { id: string; title: string; body: string; artifact: string }[];
+    items: { id: string; title: string; body: string; artifact: string; sample: string }[];
   };
   clients: {
     title: string;
@@ -170,8 +171,13 @@ export type SiteContent = {
   };
   notFound: { title: string; body: string; back: string };
   todoLabel: string;
-  /** Labels only used by the /lab prototypes. Delete with /lab. */
-  lab: { a: string; b: string; compare: string; illustrative: string; photoSlot: string; photoTodo: Copy };
+  ui: {
+    illustrative: string;
+    photoSlot: string;
+    photoTodo: Copy;
+    screenshotSlot: string;
+    footer: string;
+  };
 };
 
 const sql = `-- simplified, illustrative: not the production query
@@ -193,6 +199,14 @@ select
 from per_intent
 order by rank
 limit 10;`;
+
+// Illustrative samples for the services section (labelled "illustrative" on the page).
+const sampleTicket = "qr";
+const sampleBot = `insert into bot_messages (intent, created_at)
+values ('ticket_price', now());`;
+const sampleData = `select show, sold, capacity
+from show_sales
+where sold >= capacity;  -- sold out: alert`;
 
 const github: LinkItem = { label: "GitHub @eserafasi", href: "https://github.com/eserafasi" };
 const instagram: LinkItem[] = [
@@ -264,6 +278,7 @@ const en: SiteContent = {
     home: "Home",
     work: "Work",
     cv: "CV",
+    contact: "Contact",
     otherLanguage: "Leer en español",
     otherLanguageName: "Español",
     theme: { label: "Color theme", light: "Light", dark: "Dark", system: "System" },
@@ -287,18 +302,21 @@ const en: SiteContent = {
         title: "Ticketing & payments",
         body: "Presale and box office, Mercado Pago, bank transfer with receipt photos, QR check-in at the door.",
         artifact: "A ticket, validated at the door",
+        sample: sampleTicket,
       },
       {
         id: "bots",
         title: "Bots & automation",
         body: "WhatsApp ticket bot, deterministic flows with AI where it helps, data logged in Supabase.",
         artifact: "A conversation, logged as a row",
+        sample: sampleBot,
       },
       {
         id: "data",
         title: "Websites & data",
         body: "Next.js sites, Google Sheets and Supabase dashboards, alerts for capacity and sales.",
         artifact: "A capacity alert",
+        sample: sampleData,
       },
     ],
   },
@@ -495,13 +513,12 @@ const en: SiteContent = {
     back: "Back to home",
   },
   todoLabel: "To do",
-  lab: {
-    a: "Direction A — the prompt book",
-    b: "Direction B — the Barichara door",
-    compare: "Compare with",
-    illustrative: "illustrative",
+  ui: {
+    illustrative: "Illustrative",
     photoSlot: "Photo slot",
-    photoTodo: "TODO: a photo from a Cocoloco or 777 show (landscape, 21:9, at least 2100px wide)",
+    photoTodo: "TODO: a photo from a Cocoloco or 777 show (landscape, 21:9, at least 2100px wide), in /public/work/",
+    screenshotSlot: "Screenshot slot",
+    footer: "im-pro.tech, Bogotá, Colombia",
   },
 };
 
@@ -520,6 +537,7 @@ const es: SiteContent = {
     home: "Inicio",
     work: "Trabajo",
     cv: "Hoja de vida",
+    contact: "Contacto",
     otherLanguage: "Read in English",
     otherLanguageName: "English",
     theme: { label: "Tema de color", light: "Claro", dark: "Oscuro", system: "Sistema" },
@@ -543,18 +561,21 @@ const es: SiteContent = {
         title: "Boletería y pagos",
         body: "Preventa y taquilla, Mercado Pago, transferencia bancaria con foto del comprobante, check-in con QR en la puerta.",
         artifact: "Una boleta, validada en la puerta",
+        sample: sampleTicket,
       },
       {
         id: "bots",
         title: "Bots y automatización",
         body: "Bot de boletas por WhatsApp, flujos deterministas con IA donde ayuda, datos registrados en Supabase.",
         artifact: "Una conversación, guardada como fila",
+        sample: sampleBot,
       },
       {
         id: "data",
         title: "Sitios web y datos",
         body: "Sitios en Next.js, tableros en Google Sheets y Supabase, alertas de aforo y ventas.",
         artifact: "Una alerta de aforo",
+        sample: sampleData,
       },
     ],
   },
@@ -758,13 +779,12 @@ const es: SiteContent = {
     back: "Volver al inicio",
   },
   todoLabel: "Pendiente",
-  lab: {
-    a: "Dirección A — el libreto de dirección",
-    b: "Dirección B — la puerta de Barichara",
-    compare: "Comparar con",
-    illustrative: "ilustrativo",
+  ui: {
+    illustrative: "Ilustrativo",
     photoSlot: "Espacio para foto",
-    photoTodo: "TODO: una foto de una función de Cocoloco o 777 (horizontal, 21:9, mínimo 2100px de ancho)",
+    photoTodo: "TODO: una foto de una función de Cocoloco o 777 (horizontal, 21:9, mínimo 2100px de ancho), en /public/work/",
+    screenshotSlot: "Espacio para captura",
+    footer: "im-pro.tech, Bogotá, Colombia",
   },
 };
 
