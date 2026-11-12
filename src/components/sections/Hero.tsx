@@ -7,9 +7,7 @@ export function Hero({ t }: SectionProps) {
       <div className="container hero-grid">
         <div className="hero-text">
           <h1 id="hero-title" className="display">
-            <span>{h.name}</span>
-            <span className="visually-hidden">, </span>
-            <span className="display-brand">{h.brand}</span>
+            {h.brand}
           </h1>
           <p className="lead">{h.tagline}</p>
           <div className="actions">
@@ -20,6 +18,7 @@ export function Hero({ t }: SectionProps) {
               {h.ctaContact}
             </a>
           </div>
+          <p className="founded">{h.founded}</p>
           <p className="where">
             <span>{h.place}</span>
             <span className="num">{h.timezone}</span>

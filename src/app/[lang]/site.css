@@ -76,11 +76,8 @@
   background: var(--color-door-2);
 }
 .panel p { max-width: 62ch; }
-.panel-note { margin-top: var(--space-md); font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-door-muted); }
 
 .well { position: relative; background: var(--color-door-well); color: var(--color-door-ink); border-radius: var(--radius-card); --color-todo: var(--color-door-str); }
-.well-figure { margin: var(--space-lg) 0 0; }
-.well-figure figcaption { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-sm); align-items: center; padding: var(--space-sm) var(--space-md); border-bottom: 1px solid color-mix(in oklab, var(--color-door-line) 40%, transparent); font-size: var(--text-sm); color: var(--color-door-muted); }
 .well-tag { display: inline-block; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-door-muted); border: 1px solid currentColor; border-radius: var(--radius-pill); padding: 0 var(--space-xs); }
 .sql { margin: 0; padding: var(--space-md); overflow-x: auto; font-family: var(--font-code); font-size: var(--text-sm); line-height: 1.6; color: var(--color-door-ink); }
 .sql .sql-kw { color: var(--color-door-kw); font-weight: 600; }
@@ -93,10 +90,10 @@
 .hero-grid { display: grid; gap: var(--space-2xl); align-items: stretch; }
 @media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
 .display { display: grid; gap: var(--space-xs); font-size: var(--text-display); font-weight: 600; line-height: 0.98; letter-spacing: -0.02em; }
-.display-brand { font-size: var(--text-section); font-weight: 400; color: var(--color-accent); }
 .lead { margin-top: var(--space-xl); font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink-2); max-width: 38ch; }
+.founded { margin-top: var(--space-xl); font-family: var(--font-tech); color: var(--color-muted); }
 .actions { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
-.hero .where { margin-top: var(--space-lg); }
+.hero .where { margin-top: var(--space-xs); }
 .hero .door { min-height: 22rem; }
 @media (min-width: 60rem) { .hero .door { min-height: 30rem; } .hero .door-panels > li { min-height: 7rem; } }
 
@@ -148,13 +145,6 @@
 .slot-tall { aspect-ratio: 4 / 5; }
 @media (max-width: 40rem) { .slot-tall { aspect-ratio: 4 / 3; } }
 
-/* ---------- Case: incident ---------- */
-.incident-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-lg); }
-.hold { display: grid; text-align: end; color: var(--color-door-muted); font-size: var(--text-sm); }
-.hold .num { font-size: var(--text-display); line-height: 1; font-weight: 700; color: var(--color-door-ink); letter-spacing: -0.03em; }
-.panels { margin-top: var(--space-2xl); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); }
-@media (min-width: 48rem) { .panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } .panel-wide { grid-column: 1 / -1; } }
-
 /* ---------- Open Impro ---------- */
 .openimpro-grid { margin-top: var(--space-2xl); display: grid; gap: var(--space-xl); }
 @media (min-width: 60rem) { .openimpro-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: stretch; } }
@@ -180,24 +170,14 @@
 .tool-list li { padding: var(--space-2xs) var(--space-sm); border: 1px solid var(--color-door-line); border-radius: 1px; }
 .tool-list-inline { margin-bottom: var(--space-md); }
 
-/* ---------- Timeline ---------- */
-.timeline-list { margin-top: var(--space-2xl); }
-.timeline-entry { display: grid; gap: var(--space-xs); padding-block: var(--space-lg); border-top: 3px solid var(--color-rule); }
-@media (min-width: 48rem) { .timeline-entry { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--space-xl); } }
-.timeline-dates { font-family: var(--font-tech); color: var(--color-muted); padding-top: 0.35em; }
-.timeline-entry .h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; }
-.timeline-role { display: flex; flex-wrap: wrap; gap: var(--space-xs); font-family: var(--font-tech); font-weight: 700; }
-.timeline-role span + span { font-weight: 400; color: var(--color-muted); padding-inline-start: var(--space-xs); border-inline-start: 1px solid var(--color-rule); }
-.timeline-points { margin-top: var(--space-md); display: grid; gap: var(--space-xs); max-width: 64ch; }
-.timeline-points li { position: relative; padding-inline-start: var(--space-lg); }
-.timeline-points li::before { content: ""; position: absolute; inset-inline-start: 0; top: 0.75em; width: var(--space-sm); border-top: 2px solid var(--color-accent); }
-
-/* ---------- Beyond code ---------- */
-.beyond-grid { display: grid; gap: var(--space-2xl); }
-@media (min-width: 60rem) { .beyond-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; } }
-.beyond-roles { margin-top: var(--space-lg); display: grid; gap: var(--space-sm); font-size: var(--text-lg); }
-.beyond-line { margin: 0; padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); }
-.beyond-line p { font-family: var(--font-display); font-size: var(--text-section); line-height: 1.15; letter-spacing: -0.01em; }
+/* ---------- Who's behind it ---------- */
+.founder-grid { display: grid; gap: var(--space-2xl); }
+@media (min-width: 60rem) { .founder-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; } }
+.founder-name { margin-top: var(--space-lg); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; }
+.founder-lines { margin-top: var(--space-sm); display: grid; gap: var(--space-sm); font-size: var(--text-lg); max-width: 48ch; }
+.founder-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-md); font-family: var(--font-tech); font-weight: 700; color: var(--color-accent); }
+.founder-quote { margin: 0; padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); }
+.founder-quote p { font-family: var(--font-display); font-size: var(--text-section); line-height: 1.15; letter-spacing: -0.01em; }
 
 /* ---------- Contact (footer door) ---------- */
 .contact {

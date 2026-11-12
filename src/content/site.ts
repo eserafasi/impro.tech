@@ -23,13 +23,6 @@ export const isTodo = (value: string | null | undefined): boolean =>
 
 type LinkItem = { label: string; href: string };
 
-type IncidentStep = {
-  id: "context" | "broke" | "did" | "result" | "next";
-  label: string;
-  body: Copy;
-  /** Short handwritten-style note shown in the margin (direction A) or as a caption (B). */
-  note?: Copy;
-};
 
 type Client = {
   id: string;
@@ -46,13 +39,6 @@ type Client = {
   note?: Copy;
 };
 
-type TimelineEntry = {
-  org: string;
-  dates: string;
-  place?: string;
-  role: string;
-  points: string[];
-};
 
 export type SiteContent = {
   meta: {
@@ -71,14 +57,13 @@ export type SiteContent = {
     theme: { label: string; light: string; dark: string; system: string };
   };
   hero: {
-    name: string;
     brand: string;
     tagline: string;
+    founded: string;
     ctaWork: string;
     ctaContact: string;
     place: string;
     timezone: string;
-    note: Copy;
   };
   services: {
     title: string;
@@ -96,13 +81,6 @@ export type SiteContent = {
     facts: { value: string; label: string }[];
     learned: string;
     screenshots: Copy;
-  };
-  incident: {
-    title: string;
-    duration: string;
-    durationLabel: string;
-    steps: IncidentStep[];
-    sql: { label: string; caption: string; code: string };
   };
   openImpro: {
     title: string;
@@ -133,14 +111,12 @@ export type SiteContent = {
     ai: { title: string; tools: string[]; body: string };
     cycle: { title: string; body: string };
   };
-  timeline: {
+  founder: {
     title: string;
-    entries: TimelineEntry[];
-  };
-  beyond: {
-    title: string;
-    roles: string[];
-    line: string;
+    name: string;
+    lines: string[];
+    quote: string;
+    link: LinkItem;
   };
   contact: {
     title: string;
@@ -160,25 +136,6 @@ export type SiteContent = {
   };
 };
 
-const sql = `-- simplified, illustrative: not the production query
-with recent as (
-  select intent
-  from bot_messages
-  where created_at >= now() - interval '30 days'
-),
-per_intent as (
-  select intent, count(*) as messages
-  from recent
-  group by intent
-)
-select
-  intent,
-  messages,
-  rank() over (order by messages desc)                 as rank,
-  round(100.0 * messages / sum(messages) over (), 1)   as pct
-from per_intent
-order by rank
-limit 10;`;
 
 // Illustrative samples for the services section (labelled "illustrative" on the page).
 const sampleTicket = "qr";
@@ -245,10 +202,10 @@ const aiTools = ["Claude Code", "Cursor", "Codex", "Grok", "n8n"];
 
 const en: SiteContent = {
   meta: {
-    title: "Rafa Forero — im-pro.tech",
+    title: "im-pro.tech",
     description:
-      "Developer support engineer & storyteller. I build and run the tech behind Bogotá's independent improv scene — on Supabase and Postgres.",
-    ogAlt: "Rafa Forero — im-pro.tech. Developer support engineer & storyteller in Bogotá.",
+      "The tech behind Bogotá's independent improv scene: ticketing, bots and data, built and run on Supabase and Postgres.",
+    ogAlt: "im-pro.tech: the tech behind Bogotá's independent improv scene.",
   },
   nav: {
     skip: "Skip to content",
@@ -260,15 +217,14 @@ const en: SiteContent = {
     theme: { label: "Color theme", light: "Light", dark: "Dark", system: "System" },
   },
   hero: {
-    name: "Rafa Forero",
     brand: "im-pro.tech",
     tagline:
-      "Developer support engineer & storyteller. I build and run the tech behind Bogotá's independent improv scene — on Supabase and Postgres.",
+      "The tech behind Bogotá's independent improv scene: ticketing, bots and data, built and run on Supabase and Postgres.",
+    founded: "Founded by Rafa Forero in May 2025.",
     ctaWork: "See the work",
     ctaContact: "Contact",
     place: "Bogotá, Colombia",
     timezone: "UTC-5",
-    note: "since May 2025, after four years at Unity",
   },
   services: {
     title: "What im-pro.tech does",
@@ -325,47 +281,6 @@ const en: SiteContent = {
     learned: "What I learned from it became the base of Open Impro.",
     screenshots: "TODO: screenshots of the Inspira ticketing site (add to /public/work/inspira/)",
   },
-  incident: {
-    title: "Case study: the 1‑hour bot incident",
-    duration: "~1 h",
-    durationLabel: "downtime",
-    steps: [
-      {
-        id: "context",
-        label: "Context",
-        body: "An AI-driven WhatsApp bot (repo wa-777-tickets) answered ticket questions for the 777 group — about 100 conversations a month.",
-        note: "777, about 100 chats a month",
-      },
-      {
-        id: "broke",
-        label: "What broke",
-        body: "Midweek, the bot hit the usage limit of the AI provider (Grok) and stopped answering.",
-        note: "silence, midweek",
-      },
-      {
-        id: "did",
-        label: "What I did",
-        body: "I was already logging conversations to Supabase. I grouped messages by intent, found the top questions with SQL, and built a deterministic workflow for those intents — keeping AI only for the long tail.",
-        note: "the logs were already there",
-      },
-      {
-        id: "result",
-        label: "Result",
-        body: "About 1 hour of downtime, until the deterministic bot shipped. After that, common questions no longer depended on the AI provider being available.",
-        note: "back in ~1 hour",
-      },
-      {
-        id: "next",
-        label: "What I'd do next",
-        body: "TODO: what you'd do next (e.g. alerting on provider errors, a fallback switch)",
-      },
-    ],
-    sql: {
-      label: "Simplified",
-      caption: "Count messages per intent over the last 30 days and rank them.",
-      code: sql,
-    },
-  },
   openImpro: {
     title: "Open Impro",
     lede: "An open-source, community-governed platform for independent improv companies.",
@@ -404,49 +319,17 @@ const en: SiteContent = {
       body: "Feedback comes in after the weekend shows, and live changes ship by Thursday.",
     },
   },
-  timeline: {
-    title: "Before im-pro.tech",
-    entries: [
-      {
-        org: "Unity Technologies",
-        dates: "Jun 2021 – May 2025",
-        place: "Remote",
-        role: "Senior Lead Developer Support Engineer",
-        points: [
-          "Led 6 engineers across Version Control subproducts.",
-          "Lead technical contact for enterprise game studios.",
-          "Answered Unity Version Control (Plastic SCM) questions on the Unity forums and Stack Overflow.",
-          "Built an AI-assisted Zendesk plugin: +9% CSAT, 21% faster response/solve time.",
-          "Zero-downtime migration for ~500k users.",
-        ],
-      },
-      {
-        org: "vLex",
-        dates: "2020 – 2021",
-        role: "Full-stack / technical support engineer",
-        points: ["Jira automation cut tickets reaching tier 3 by 25%, with satisfaction held at 96%."],
-      },
-      {
-        org: "Accenture",
-        dates: "2020",
-        role: "Full-stack engineer (Angular, Spring Boot)",
-        points: [],
-      },
-      {
-        org: "Universidad de los Andes",
-        dates: "2020",
-        role: "B.S. Software & Computing Engineering",
-        points: [],
-      },
+  founder: {
+    title: "Who's behind it",
+    name: "Rafa Forero",
+    lines: [
+      "Software engineer, improviser and actor-trainer in Bogotá.",
+      "Before im-pro.tech: Senior Lead Developer Support Engineer at Unity Technologies (2021 – 2025).",
+      "Improv director and actor-trainer (Proyecto Cocoloco, 777). Certified breathwork facilitator (The Breath Act).",
     ],
-  },
-  beyond: {
-    title: "Beyond code",
-    roles: [
-      "Improv director and actor-trainer (Proyecto Cocoloco, 777).",
-      "Certified breathwork facilitator (The Breath Act).",
-    ],
-    line: "The stage and the support queue train the same thing: listening, staying calm, and saying yes to what's actually happening.",
+    quote:
+      "The stage and the support queue train the same thing: listening, staying calm, and saying yes to what's actually happening.",
+    link: github,
   },
   contact: {
     title: "Contact",
@@ -472,10 +355,10 @@ const en: SiteContent = {
 
 const es: SiteContent = {
   meta: {
-    title: "Rafa Forero — im-pro.tech",
+    title: "im-pro.tech",
     description:
-      "Ingeniero de soporte para desarrolladores y narrador. Construyo y opero la tecnología detrás de la escena independiente de improvisación de Bogotá — sobre Supabase y Postgres.",
-    ogAlt: "Rafa Forero — im-pro.tech. Ingeniero de soporte para desarrolladores y narrador en Bogotá.",
+      "La tecnología detrás de la escena independiente de improvisación de Bogotá: boletería, bots y datos, construidos y operados sobre Supabase y Postgres.",
+    ogAlt: "im-pro.tech: la tecnología detrás de la escena independiente de improvisación de Bogotá.",
   },
   nav: {
     skip: "Saltar al contenido",
@@ -487,15 +370,14 @@ const es: SiteContent = {
     theme: { label: "Tema de color", light: "Claro", dark: "Oscuro", system: "Sistema" },
   },
   hero: {
-    name: "Rafa Forero",
     brand: "im-pro.tech",
     tagline:
-      "Ingeniero de soporte para desarrolladores y narrador. Construyo y opero la tecnología detrás de la escena independiente de improvisación de Bogotá — sobre Supabase y Postgres.",
+      "La tecnología detrás de la escena independiente de improvisación de Bogotá: boletería, bots y datos, construidos y operados sobre Supabase y Postgres.",
+    founded: "Fundada por Rafa Forero en mayo de 2025.",
     ctaWork: "Ver el trabajo",
     ctaContact: "Contacto",
     place: "Bogotá, Colombia",
     timezone: "UTC-5",
-    note: "desde mayo de 2025, después de cuatro años en Unity",
   },
   services: {
     title: "Qué hace im-pro.tech",
@@ -557,47 +439,6 @@ const es: SiteContent = {
     learned: "Lo que aprendí ahí se volvió la base de Open Impro.",
     screenshots: "TODO: capturas del sitio de boletería de Inspira (agregar en /public/work/inspira/)",
   },
-  incident: {
-    title: "Caso: el incidente de una hora del bot",
-    duration: "~1 h",
-    durationLabel: "fuera de servicio",
-    steps: [
-      {
-        id: "context",
-        label: "Contexto",
-        body: "Un bot de WhatsApp con IA (repo wa-777-tickets) respondía preguntas sobre boletas para el grupo 777 — unas 100 conversaciones al mes.",
-        note: "777, unas 100 conversaciones al mes",
-      },
-      {
-        id: "broke",
-        label: "Qué se rompió",
-        body: "A mitad de semana, el bot llegó al límite de uso del proveedor de IA (Grok) y dejó de responder.",
-        note: "silencio, a mitad de semana",
-      },
-      {
-        id: "did",
-        label: "Qué hice",
-        body: "Ya estaba registrando las conversaciones en Supabase. Agrupé los mensajes por intención, encontré las preguntas más frecuentes con SQL y construí un flujo determinista para esas intenciones — dejando la IA solo para la cola larga.",
-        note: "los registros ya estaban ahí",
-      },
-      {
-        id: "result",
-        label: "Resultado",
-        body: "Cerca de 1 hora fuera de servicio, hasta que salió el bot determinista. Desde entonces, las preguntas comunes ya no dependen de que el proveedor de IA esté disponible.",
-        note: "de vuelta en ~1 hora",
-      },
-      {
-        id: "next",
-        label: "Qué haría después",
-        body: "TODO: qué harías después (p. ej. alertas ante errores del proveedor, un interruptor de respaldo)",
-      },
-    ],
-    sql: {
-      label: "Simplificado",
-      caption: "Contar mensajes por intención en los últimos 30 días y ordenarlos.",
-      code: sql,
-    },
-  },
   openImpro: {
     title: "Open Impro",
     lede: "Una plataforma de código abierto, gobernada por su comunidad, para compañías independientes de improvisación.",
@@ -636,51 +477,17 @@ const es: SiteContent = {
       body: "La retroalimentación llega después de las funciones del fin de semana, y los cambios salen en vivo a más tardar el jueves.",
     },
   },
-  timeline: {
-    title: "Antes de im-pro.tech",
-    entries: [
-      {
-        org: "Unity Technologies",
-        dates: "jun 2021 – may 2025",
-        place: "Remoto",
-        role: "Senior Lead Developer Support Engineer",
-        points: [
-          "Lideré 6 ingenieros en los subproductos de Version Control.",
-          "Contacto técnico principal para estudios de videojuegos enterprise.",
-          "Respondí preguntas de Unity Version Control (Plastic SCM) en los foros de Unity y en Stack Overflow.",
-          "Construí un plugin de Zendesk asistido por IA: +9% CSAT, 21% más rápido en tiempo de respuesta/resolución.",
-          "Migración sin downtime para ~500k usuarios.",
-        ],
-      },
-      {
-        org: "vLex",
-        dates: "2020 – 2021",
-        role: "Ingeniero full-stack / de soporte técnico",
-        points: [
-          "Una automatización en Jira redujo en 25% los tickets que llegaban a nivel 3, con la satisfacción sostenida en 96%.",
-        ],
-      },
-      {
-        org: "Accenture",
-        dates: "2020",
-        role: "Ingeniero full-stack (Angular, Spring Boot)",
-        points: [],
-      },
-      {
-        org: "Universidad de los Andes",
-        dates: "2020",
-        role: "Ingeniería de Sistemas y Computación",
-        points: [],
-      },
+  founder: {
+    title: "Quién está detrás",
+    name: "Rafa Forero",
+    lines: [
+      "Ingeniero de software, improvisador y formador de actores en Bogotá.",
+      "Antes de im-pro.tech: Senior Lead Developer Support Engineer en Unity Technologies (2021 – 2025).",
+      "Director de improvisación y formador de actores (Proyecto Cocoloco, 777). Facilitador certificado de breathwork (The Breath Act).",
     ],
-  },
-  beyond: {
-    title: "Más allá del código",
-    roles: [
-      "Director de improvisación y formador de actores (Proyecto Cocoloco, 777).",
-      "Facilitador certificado de breathwork (The Breath Act).",
-    ],
-    line: "El escenario y la cola de soporte entrenan lo mismo: escuchar, mantener la calma y decirle que sí a lo que de verdad está pasando.",
+    quote:
+      "El escenario y la cola de soporte entrenan lo mismo: escuchar, mantener la calma y decirle que sí a lo que de verdad está pasando.",
+    link: github,
   },
   contact: {
     title: "Contacto",

@@ -9,24 +9,24 @@ Nothing here may be invented: if a fact is missing it is a `TODO:` in `site.ts`.
 This is the **im-pro.tech business site**, not a personal CV site. There is no
 `/cv` page.
 
-The personal-company site of Rafael Andrés Forero Alvarado (Rafa), software
-engineer, improviser and actor-trainer in Bogotá, Colombia (UTC-5).
-
-im-pro.tech is his tech company, founded May 2025 after leaving Unity
+im-pro.tech is the tech company of Rafael Andrés Forero Alvarado (Rafa), software
+engineer, improviser and actor-trainer in Bogotá, Colombia (UTC-5). It was founded in May 2025 after leaving Unity
 Technologies. It runs all the technology for a small group of Bogotá improv
 companies and for his family's agri-business. Its main product is Open Impro,
 an open-source ticketing and community platform for independent improv
 companies (Next.js + Supabase).
 
-## Audiences, in priority order
+## Audiences and focus
 
-1. **Technical recruiters and engineers** (now: Supabase Support). In under 60
-   seconds: an experienced developer-support engineer who builds and runs real
-   production apps on Supabase and Postgres; May 2025 → now is serious
-   engineering work, not a gap. Scene: laptop, skimming between tabs.
-2. **Improv and theater companies** that might want im-pro.tech to run their
-   tech. Scene: phone, arriving from Instagram.
-3. **The improv community**, who should recognise the human side.
+The page shares **what im-pro.tech is doing in tech right now**: the systems it
+builds and runs, the clients it runs them for, and Open Impro. It speaks to all
+three audiences at once, none of them first:
+
+- **Improv and theater companies** that might want im-pro.tech to run their
+  tech. Scene: phone, arriving from Instagram.
+- **The improv community**, who should recognise the people behind it.
+- **Engineers and recruiters**, who find the proof in the case study, the
+  live Supabase counter and the stack, without the page being aimed at them.
 
 ## Surfaces and modes
 
@@ -35,20 +35,15 @@ companies (Next.js + Supabase).
 
 ## Primary actions
 
-1. Read the case studies (Inspira, the bot incident).
+1. Read the work (services, clients, the Inspira case study, Open Impro).
 2. Contact (email, `TODO` in `site.ts`).
 
 ## Proof we have (and only this)
 
 - Inspira Impro Fest ticketing: ~300 tickets, Mercado Pago, QR at the door.
-- WhatsApp bot incident (`wa-777-tickets`): ~100 conversations/month, Grok
-  usage limit hit, ~1 hour downtime until a deterministic bot shipped.
 - Open Impro: 3 member companies, each ~100 tickets/month; public repo planned
   for end of 2026.
-- Unity (Jun 2021 – May 2025): led 6 engineers; +9% CSAT and 21% faster
-  response/solve with an AI-assisted Zendesk plugin; zero-downtime migration for
-  ~500k users.
-- vLex (2020–2021): Jira automation cut tier-3 tickets by 25%, satisfaction 96%.
+- Founder: ex-Unity Senior Lead Developer Support Engineer (2021 – 2025).
 
 ## Absent (never fake)
 

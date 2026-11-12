@@ -72,5 +72,5 @@ screenshots). Each carries a visible `TODO:` from `site.ts`.
   95–99 (median of 3 runs on `/` and `/es`: 95).
 - CLS 0 on every page.
 - Hallmark sloplint: 0 FAIL apart from gate 58 (words per screen), left open on
-  purpose because the incident report is the owner's copy; Reflex
+  purpose where the owner's copy runs long; Reflex
   waivers are recorded in the CSS stamp.

@@ -1,12 +1,11 @@
-/* Hallmark · shape: painted door, ten sections down one page · genre: editorial · theme: custom · job: hire · idea: "Barichara's añil doors hold the systems; its sandstone and tapia hold the people" · vibe: "sandstone, añil doors, a working stage"
- * paper: oklch(84% 0.035 78) · accent: oklch(36% 0.13 262) añil · display: Alegreya · body: Alegreya, Alegreya Sans for tech · hero: name and tagline on sandstone beside an añil door whose panels are the Supabase features · nav: wordmark left, links right · footer: the contact door · imagery: the product built (SQL, the live counter, a ticket), photo and screenshot slots marked TODO · signature: añil door panels that hold real systems
+/* Hallmark · shape: painted door, eight sections down one page · genre: editorial · theme: custom · job: hire · idea: "Barichara's añil doors hold the systems; its sandstone and tapia hold the people" · vibe: "sandstone, añil doors, a working stage"
+ * paper: oklch(84% 0.035 78) · accent: oklch(36% 0.13 262) añil · display: Alegreya · body: Alegreya, Alegreya Sans for tech · hero: the company name and tagline on sandstone beside an añil door whose panels are the Supabase features · nav: wordmark left, links right · footer: the contact door · imagery: the product built (code samples, the live counter, a ticket), photo and screenshot slots marked TODO · signature: añil door panels that hold real systems
  * axes: mid/roman-serif/cool · posture: committed · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V5 · weakest: E, ten sections is long for one page; each tech section is one añil door so the rhythm reads as people, door, people */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V5 · weakest: S, the founder line is quiet; the company leads and the person sits in one section near the end */
 /* Hallmark · waive 23 · posture committed, the añil is the door surface, not a signal · Barichara's añil doors are the material that holds every tech section */
 /* Hallmark · waive 82 · one svg, an illustrative ticket QR labelled as such · the QR shows what a ticket validated at the door looks like, not a count */
 /* Hallmark · waive 44c · hero centred in svh, door grown to 30rem · the Supabase door beside the tagline carries the hero, the tagline is the owner's copy */
 /* Hallmark · waive 79 · hero content centred in the first screen · the gap is the sandstone around the añil door, kept calm on purpose */
-/* Hallmark · waive 59 · ten sections on the home page · the brief names every section of the page, in order */
 /* Hallmark · waive 26b · no form controls and no aria-disabled on the page · nothing on this site can be disabled, links and the theme toggle only */
 @import "tailwindcss";
 

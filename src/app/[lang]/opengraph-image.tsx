@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { defaultLocale, getContent, isLocale } from "@/content/site";
 
-export const alt = "Rafa Forero — im-pro.tech";
+export const alt = "im-pro.tech";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -24,9 +24,8 @@ export default async function Image({ params }: { params: Promise<{ lang: string
     (
       <div style={{ width: "100%", height: "100%", display: "flex", background: C.paper, padding: 64, gap: 56 }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", flex: 7 }}>
-          <div style={{ fontSize: 88, fontWeight: 700, color: C.ink, lineHeight: 1 }}>{t.hero.name}</div>
-          <div style={{ fontSize: 48, color: C.door, marginTop: 12 }}>{t.hero.brand}</div>
-          <div style={{ fontSize: 28, color: C.ink2, marginTop: 36, lineHeight: 1.35 }}>{t.hero.tagline}</div>
+          <div style={{ fontSize: 96, fontWeight: 700, color: C.ink, lineHeight: 1 }}>{t.hero.brand}</div>
+          <div style={{ fontSize: 32, color: C.ink2, marginTop: 36, lineHeight: 1.35 }}>{t.hero.tagline}</div>
         </div>
         <div
           style={{
