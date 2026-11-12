@@ -1,38 +1,31 @@
-import { Copy } from "@/components/shared/Todo";
+import { Figure } from "@/components/shared/Figure";
 import type { SectionProps } from "./types";
 
+/** Showcase: the real festival ticketing site on desktop and phone, then its facts. */
 export function CaseInspira({ t }: SectionProps) {
   const c = t.caseInspira;
-  const [lead, ...rest] = c.facts;
   return (
     <section className="inspira section" aria-labelledby="inspira-title">
-      <div className="container inspira-grid">
-        <div className="inspira-text">
+      <div className="container">
+        <div className="section-head split-head">
           <h2 id="inspira-title" className="h2">
             {c.title}
           </h2>
           <p className="intro">{c.lede}</p>
-          <p className="inspira-figure">
-            <span className="inspira-value num">{lead.value}</span>
-            <span className="inspira-label">{lead.label}</span>
-          </p>
-          <dl className="inspira-facts">
-            {rest.map((f) => (
-              <div key={f.label}>
-                <dt>{f.value}</dt>
-                <dd>{f.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="inspira-learned">{c.learned}</p>
         </div>
-        <div data-slot="inspira-screens" className="slot-tall">
-          <p>
-            {t.ui.screenshotSlot}
-            <br />
-            <Copy value={c.screenshots} todoLabel={t.todoLabel} />
-          </p>
+        <div className="showcase">
+          <Figure t={t} id="siteInspira" sizes="(min-width: 60rem) 66vw, 100vw" className="showcase-main" />
+          <Figure t={t} id="siteInspiraMobile" sizes="(min-width: 60rem) 22vw, 50vw" className="showcase-phone" />
         </div>
+        <dl className="figures">
+          {c.facts.map((f) => (
+            <div key={f.label}>
+              <dt className="num">{f.value}</dt>
+              <dd>{f.label}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="inspira-learned">{c.learned}</p>
       </div>
     </section>
   );

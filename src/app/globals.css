@@ -65,6 +65,11 @@
   --dark-door-well: oklch(13% 0.04 262);
   --dark-door-line: oklch(60% 0.08 258);
 
+  /* The stage behind every door: the same in light and dark mode */
+  --stage-black: oklch(13% 0.012 285);
+  --stage-ink: oklch(97% 0.012 85);
+  --stage-muted: oklch(86% 0.02 85);
+
   /* Roles (light by default) */
   --color-paper: var(--light-paper);
   --color-paper-2: var(--light-paper-2);

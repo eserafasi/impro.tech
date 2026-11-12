@@ -28,7 +28,10 @@ export function Contact({ t }: SectionProps) {
             </li>
           ))}
         </ul>
-        <p className="footer-line">{t.ui.footer}</p>
+        <p className="footer-line">
+          <span>{t.ui.footer}</span>
+          <span>{t.media.credits}</span>
+        </p>
       </div>
     </footer>
   );
