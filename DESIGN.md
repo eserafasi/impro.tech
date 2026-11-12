@@ -5,10 +5,33 @@ Written from the built site (direction B, "the Barichara door"). Tokens live in
 
 ## The idea
 
-Barichara's añil-painted doors hold the systems; its sandstone and tapia hold
-the people. Every technical section is a door (an añil panel with an inset
-molding line); every human section sits on stone. Reading down the page you
-walk past a wall: stone, door, stone, door.
+**Doors onto the stage.** The page is a Barichara wall: sandstone, with añil
+doors. Every door opens onto a stage. The doors are the systems im-pro.tech
+builds; the photographs behind them are the shows those systems make possible.
+
+- **Signature:** the hero is the owner's Maestro photo seen through an añil
+  doorway. On load the two door leaves slide apart (750 ms, once, CSS only).
+  With `prefers-reduced-motion` the door is simply open. It costs about 0.7 s of
+  Lighthouse LCP (see Quality bar).
+- **One scroll pattern:** the services section is a sticky diptych (the 777
+  stage photo pinned, the three services scrolling past); their artifacts
+  fade in with a CSS scroll timeline where supported.
+- **Pictures:** ten owner photos (Camilo for 777; Gio and Kim for Proyecto
+  Cocoloco) and four captures of the live sites (777impro.art,
+  inspiraimprofest.art, openimpro.tech, omifarmcolombia.com), all in
+  `src/assets` and mapped in `src/content/media.ts`. Alt text, captions and
+  credits live in `site.ts`.
+
+## Sections
+
+1. Hero: Poster through the doorway.
+2. Tickets, bots and dashboards: sticky diptych.
+3. Four stages and a farm: a rail of client cards led by their site or a photo.
+4. ~300 tickets, one festival: showcase of the Inspira site (desktop and phone) and figures.
+5. Open Impro: split with the live planet graph.
+6. Built on Supabase: añil bento led by the live ticket counter.
+7. Who's behind it: split with Rafa on Maestro and the stage/support-queue line.
+8. Contact: the night door, with photo credits.
 
 ## Colour
 
@@ -68,9 +91,8 @@ screenshots). Each carries a visible `TODO:` from `site.ts`.
 
 ## Quality bar (checked at the last build)
 
-- Lighthouse mobile: Accessibility 100, Best Practices 100, SEO 100, Performance
-  95–99 (median of 3 runs on `/` and `/es`: 95).
+- Lighthouse mobile (median of 3 runs): Accessibility, Best Practices and SEO
+  100; Performance 91 on `/` and 94 on `/es` with the door animation, 93–96
+  without it.
 - CLS 0 on every page.
-- Hallmark sloplint: 0 FAIL apart from gate 58 (words per screen), left open on
-  purpose where the owner's copy runs long; Reflex
-  waivers are recorded in the CSS stamp.
+- Hallmark sloplint (render tier): 0 FAIL; waivers for 23, 26b and 82 recorded in the CSS stamp.

@@ -23,9 +23,9 @@ export function Figure({ t, id, sizes, className, caption = true, eager = false 
         src={m.src}
         alt={text.alt}
         sizes={sizes}
-        placeholder="blur"
+        placeholder={eager ? "empty" : "blur"}
         style={m.position ? { objectPosition: m.position } : undefined}
-        {...(eager ? { loading: "eager" as const, fetchPriority: "high" as const } : {})}
+        {...(eager ? { preload: true, fetchPriority: "high" as const } : {})}
       />
       {caption && <figcaption>{text.caption}</figcaption>}
     </figure>

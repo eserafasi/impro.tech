@@ -22,6 +22,7 @@ npm run dev
 | Section styles | `src/app/[lang]/site.css` |
 | Live counter (server read, Realtime client) | `src/lib/stats.ts`, `src/components/shared/LiveCounter.tsx` |
 | Supabase SQL | `supabase/migrations/` |
+| Photos and site captures | `src/assets/` (mapped in `src/content/media.ts`; alt text and credits in `site.ts`) |
 | Client logos | `public/clients/` (then set `logo` in `site.ts`) |
 | Product facts / design system | `PRODUCT.md`, `DESIGN.md` |
 
