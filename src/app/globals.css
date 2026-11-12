@@ -6,9 +6,7 @@
 /* Hallmark · waive 82 · one svg, an illustrative ticket QR labelled as such · the QR shows what a ticket validated at the door looks like, not a count */
 /* Hallmark · waive 44c · hero centred in svh, door grown to 30rem · the Supabase door beside the tagline carries the hero, the tagline is the owner's copy */
 /* Hallmark · waive 79 · hero content centred in the first screen · the gap is the sandstone around the añil door, kept calm on purpose */
-/* Hallmark · waive 59 · ten sections on the home page, five short sections on the CV · the brief names every section of the page and the CV is a document */
-/* Hallmark · waive 77 · CV education and contact are short facts · a CV keeps education and contact short, they are facts and not sections to fill */
-/* Hallmark · waive 78 · CV section heads at 31px under a 48px name · the CV is a Read surface where section heads stay modest under the name */
+/* Hallmark · waive 59 · ten sections on the home page · the brief names every section of the page, in order */
 /* Hallmark · waive 26b · no form controls and no aria-disabled on the page · nothing on this site can be disabled, links and the theme toggle only */
 @import "tailwindcss";
 
@@ -51,11 +49,6 @@
   --light-door-line: oklch(70% 0.08 258);
   --light-door-kw: oklch(84% 0.1 200);
   --light-door-str: oklch(86% 0.1 95);
-
-  --print-paper: oklch(99.5% 0.003 85);
-  --print-ink: oklch(15% 0.01 262);
-  --print-muted: oklch(35% 0.01 262);
-  --print-rule: oklch(70% 0.01 262);
 
   --dark-paper: oklch(23% 0.075 262);
   --dark-paper-2: oklch(28% 0.03 60);

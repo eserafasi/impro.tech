@@ -6,6 +6,9 @@ Nothing here may be invented: if a fact is missing it is a `TODO:` in `site.ts`.
 
 ## What it is
 
+This is the **im-pro.tech business site**, not a personal CV site. There is no
+`/cv` page.
+
 The personal-company site of Rafael Andrés Forero Alvarado (Rafa), software
 engineer, improviser and actor-trainer in Bogotá, Colombia (UTC-5).
 
@@ -28,13 +31,12 @@ companies (Next.js + Supabase).
 ## Surfaces and modes
 
 - `/` and `/es`: single scrolling page. Mode: **Persuade** (the visitor should
-  believe the engineering is real and reach the CV or contact).
-- `/cv` and `/es/cv`: HTML CV, print-friendly, PDF download. Mode: **Read**.
+  believe the engineering is real and get in touch).
 
 ## Primary actions
 
-1. Recruiter: open the CV (`/cv`) or read the incident case study.
-2. Company: contact (email, `TODO` in `site.ts`).
+1. Read the case studies (Inspira, the bot incident).
+2. Contact (email, `TODO` in `site.ts`).
 
 ## Proof we have (and only this)
 

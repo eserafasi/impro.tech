@@ -1,8 +1,6 @@
-import Link from "next/link";
-import { localePath } from "@/lib/i18n";
 import type { SectionProps } from "./types";
 
-export function Hero({ t, lang }: SectionProps) {
+export function Hero({ t }: SectionProps) {
   const h = t.hero;
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -18,9 +16,9 @@ export function Hero({ t, lang }: SectionProps) {
             <a className="btn btn-primary" href="#work">
               {h.ctaWork}
             </a>
-            <Link className="btn btn-secondary" href={localePath(lang, "/cv")}>
-              {h.ctaCv}
-            </Link>
+            <a className="btn btn-secondary" href="#contact">
+              {h.ctaContact}
+            </a>
           </div>
           <p className="where">
             <span>{h.place}</span>

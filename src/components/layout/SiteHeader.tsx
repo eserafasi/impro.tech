@@ -32,9 +32,6 @@ export function SiteHeader({ t, lang, path, home = false }: Props) {
                 <a href={anchor("work")}>{t.nav.work}</a>
               </li>
               <li>
-                <Link href={localePath(lang, "/cv")}>{t.nav.cv}</Link>
-              </li>
-              <li>
                 <a href={anchor("contact")}>{t.nav.contact}</a>
               </li>
               <li>

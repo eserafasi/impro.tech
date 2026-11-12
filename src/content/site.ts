@@ -59,14 +59,11 @@ export type SiteContent = {
     title: string;
     description: string;
     ogAlt: string;
-    cvTitle: string;
-    cvDescription: string;
   };
   nav: {
     skip: string;
     home: string;
     work: string;
-    cv: string;
     contact: string;
     /** Label for the link that switches to the *other* language. */
     otherLanguage: string;
@@ -78,7 +75,7 @@ export type SiteContent = {
     brand: string;
     tagline: string;
     ctaWork: string;
-    ctaCv: string;
+    ctaContact: string;
     place: string;
     timezone: string;
     note: Copy;
@@ -151,23 +148,6 @@ export type SiteContent = {
     email: Copy;
     emailLabel: string;
     links: LinkItem[];
-  };
-  cv: {
-    title: string;
-    download: string;
-    pdfPath: string;
-    summary: Copy;
-    sections: {
-      current: string;
-      experience: string;
-      education: string;
-      skills: string;
-      contact: string;
-    };
-    current: TimelineEntry;
-    education: { school: string; degree: string; year: string };
-    skills: Copy;
-    back: string;
   };
   notFound: { title: string; body: string; back: string };
   todoLabel: string;
@@ -269,15 +249,11 @@ const en: SiteContent = {
     description:
       "Developer support engineer & storyteller. I build and run the tech behind Bogotá's independent improv scene — on Supabase and Postgres.",
     ogAlt: "Rafa Forero — im-pro.tech. Developer support engineer & storyteller in Bogotá.",
-    cvTitle: "CV — Rafa Forero",
-    cvDescription:
-      "CV of Rafael Andrés Forero Alvarado: developer support engineer, ex-Unity, founder of im-pro.tech.",
   },
   nav: {
     skip: "Skip to content",
     home: "Home",
     work: "Work",
-    cv: "CV",
     contact: "Contact",
     otherLanguage: "Leer en español",
     otherLanguageName: "Español",
@@ -289,7 +265,7 @@ const en: SiteContent = {
     tagline:
       "Developer support engineer & storyteller. I build and run the tech behind Bogotá's independent improv scene — on Supabase and Postgres.",
     ctaWork: "See the work",
-    ctaCv: "CV",
+    ctaContact: "Contact",
     place: "Bogotá, Colombia",
     timezone: "UTC-5",
     note: "since May 2025, after four years at Unity",
@@ -479,34 +455,6 @@ const en: SiteContent = {
     emailLabel: "Email",
     links: [github, ...instagram],
   },
-  cv: {
-    title: "Rafael Andrés Forero Alvarado",
-    download: "Download PDF",
-    pdfPath: "/cv/Rafael-Forero-CV.pdf",
-    summary: "TODO: two-line CV summary in your own words",
-    sections: {
-      current: "Now",
-      experience: "Experience",
-      education: "Education",
-      skills: "Skills",
-      contact: "Contact",
-    },
-    current: {
-      org: "im-pro.tech",
-      dates: "May 2025 – present",
-      place: "Bogotá, Colombia",
-      role: "Founder & engineer",
-      points: [
-        "Run all the technology for a group of Bogotá improv companies and a family agri-business.",
-        "Building Open Impro, an open-source ticketing and community platform (Next.js, Supabase).",
-        "Inspira Impro Fest ticketing: ~300 tickets, Mercado Pago, QR validation at the door.",
-        "Recovered an AI WhatsApp bot from a provider outage in ~1 hour with a deterministic workflow built from Supabase logs.",
-      ],
-    },
-    education: { school: "Universidad de los Andes", degree: "B.S. Software & Computing Engineering", year: "2020" },
-    skills: "TODO: skills and languages list for the CV",
-    back: "Back to the site",
-  },
   notFound: {
     title: "That scene isn't in the script.",
     body: "The page you were looking for doesn't exist. Let's go back to the top.",
@@ -528,15 +476,11 @@ const es: SiteContent = {
     description:
       "Ingeniero de soporte para desarrolladores y narrador. Construyo y opero la tecnología detrás de la escena independiente de improvisación de Bogotá — sobre Supabase y Postgres.",
     ogAlt: "Rafa Forero — im-pro.tech. Ingeniero de soporte para desarrolladores y narrador en Bogotá.",
-    cvTitle: "Hoja de vida — Rafa Forero",
-    cvDescription:
-      "Hoja de vida de Rafael Andrés Forero Alvarado: ingeniero de soporte para desarrolladores, ex-Unity, fundador de im-pro.tech.",
   },
   nav: {
     skip: "Saltar al contenido",
     home: "Inicio",
     work: "Trabajo",
-    cv: "Hoja de vida",
     contact: "Contacto",
     otherLanguage: "Read in English",
     otherLanguageName: "English",
@@ -548,7 +492,7 @@ const es: SiteContent = {
     tagline:
       "Ingeniero de soporte para desarrolladores y narrador. Construyo y opero la tecnología detrás de la escena independiente de improvisación de Bogotá — sobre Supabase y Postgres.",
     ctaWork: "Ver el trabajo",
-    ctaCv: "Hoja de vida",
+    ctaContact: "Contacto",
     place: "Bogotá, Colombia",
     timezone: "UTC-5",
     note: "desde mayo de 2025, después de cuatro años en Unity",
@@ -744,34 +688,6 @@ const es: SiteContent = {
     email: CONTACT_EMAIL,
     emailLabel: "Correo",
     links: [github, ...instagram],
-  },
-  cv: {
-    title: "Rafael Andrés Forero Alvarado",
-    download: "Descargar PDF",
-    pdfPath: "/cv/Rafael-Forero-CV.pdf",
-    summary: "TODO: resumen de la hoja de vida en dos líneas, en tus palabras",
-    sections: {
-      current: "Ahora",
-      experience: "Experiencia",
-      education: "Educación",
-      skills: "Habilidades",
-      contact: "Contacto",
-    },
-    current: {
-      org: "im-pro.tech",
-      dates: "may 2025 – hoy",
-      place: "Bogotá, Colombia",
-      role: "Fundador e ingeniero",
-      points: [
-        "Opero toda la tecnología de un grupo de compañías de improvisación de Bogotá y de un agronegocio familiar.",
-        "Construyo Open Impro, una plataforma de boletería y comunidad de código abierto (Next.js, Supabase).",
-        "Boletería de Inspira Impro Fest: ~300 boletas, Mercado Pago, validación con QR en la puerta.",
-        "Recuperé un bot de WhatsApp con IA de una caída del proveedor en ~1 hora, con un flujo determinista construido a partir de registros en Supabase.",
-      ],
-    },
-    education: { school: "Universidad de los Andes", degree: "Ingeniería de Sistemas y Computación", year: "2020" },
-    skills: "TODO: lista de habilidades e idiomas para la hoja de vida",
-    back: "Volver al sitio",
   },
   notFound: {
     title: "Esa escena no está en el libreto.",

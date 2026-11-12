@@ -20,16 +20,14 @@ npm run dev
 | Sections | `src/components/sections/` |
 | Tokens and base styles | `src/app/globals.css` |
 | Section styles | `src/app/[lang]/site.css` |
-| CV page and print styles | `src/app/[lang]/cv/` |
 | Live counter (server read, Realtime client) | `src/lib/stats.ts`, `src/components/shared/LiveCounter.tsx` |
 | Supabase SQL | `supabase/migrations/` |
 | Client logos | `public/clients/` (then set `logo` in `site.ts`) |
-| CV PDF | `public/cv/Rafael-Forero-CV.pdf` |
 | Product facts / design system | `PRODUCT.md`, `DESIGN.md` |
 
 ## Routes
 
-`/` English, `/es` Spanish, `/cv`, `/es/cv`. `/en/*` redirects (308) to the unprefixed URL.
+`/` English, `/es` Spanish. `/en/*` redirects (308) to the unprefixed URL.
 Also `/sitemap.xml`, `/robots.txt`, and per-language Open Graph images.
 
 ## The live counter (Supabase)

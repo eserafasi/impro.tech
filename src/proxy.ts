@@ -3,9 +3,9 @@ import { NextResponse, type NextRequest } from "next/server";
 /**
  * URL scheme: English lives at "/" (no prefix), Spanish at "/es".
  * Internally every page sits under app/[lang], so:
- *   /cv        -> rewrite  -> /en/cv
- *   /es/cv     -> as is
- *   /en/cv     -> redirect -> /cv   (one canonical URL per page)
+ *   /          -> rewrite  -> /en
+ *   /es        -> as is
+ *   /en        -> redirect -> /     (one canonical URL per page)
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

@@ -1,8 +1,7 @@
 # DESIGN.md — im-pro.tech
 
 Written from the built site (direction B, "the Barichara door"). Tokens live in
-`src/app/globals.css`; section styles in `src/app/[lang]/site.css`; CV in
-`src/app/[lang]/cv/cv.css`. Copy never lives in components: see `src/content/site.ts`.
+`src/app/globals.css`; section styles in `src/app/[lang]/site.css`. Copy never lives in components: see `src/content/site.ts`.
 
 ## The idea
 
@@ -73,5 +72,5 @@ screenshots). Each carries a visible `TODO:` from `site.ts`.
   95–99 (median of 3 runs on `/` and `/es`: 95).
 - CLS 0 on every page.
 - Hallmark sloplint: 0 FAIL apart from gate 58 (words per screen), left open on
-  purpose because the incident report and CV are the owner's copy; Reflex
+  purpose because the incident report is the owner's copy; Reflex
   waivers are recorded in the CSS stamp.
